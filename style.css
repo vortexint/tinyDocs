@@ -2,7 +2,15 @@
 
 /* The body by default has no scrolling */
 body {
+    overflow: hidden;
+}
 
+/* Moden scrollbar webkit */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: #222222;
+    color: #3b3b3b;
 }
 
 /* Modern dark sidebar div */
@@ -65,10 +73,54 @@ body {
     background-color: #ffffff
 }
 
-/* Moden scrollbar webkit */
-::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+.content {
+    position: absolute;
+    left: 20%;
+    bottom: 0;
+    right: 0;
+    width: 80%;
+    height: 100%;
+    background-color: #0b0c0c;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Content-topbar */
+.content-topbar {
+    background: rgb(11,12,12);
+    background: linear-gradient(0deg, rgba(11,12,12,1) 0%, rgba(23,24,26,1) 50%, rgba(11,12,12,1) 100%);
+    color: #fff;
+    width: 100%;
+    height: 5%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Current page name container div positioned at left with 100% height*/
+.content-current-page {
+    position: absolute;
+    left: 0;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 20%;
+    height: 100%;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: left;
+    text-shadow: 5px 5px 5px #000;
+    /* animation */
+    transition: all 0.2s ease-in-out;
+}
+
+/* content-container */
+.content-container {
     background-color: #17181a;
-    color: #17181a;
+    color: #fff;
+    top: 5%;
+    width: 100%;
+    height: 95%;
+    margin: 5px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    font-family: 'Montserrat', sans-serif;
 }

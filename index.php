@@ -11,8 +11,9 @@
 // <code lang="cpp">
 // // cpp code
 // </code>
-// <b>bold text</b>
-// <i>italic text</i>
+// *bold text*
+// _italic text_
+// _*bold and italic*_
 // <u>underline text</u>
 // <s>strikethrough text</s>
 // <img src="image.png">
