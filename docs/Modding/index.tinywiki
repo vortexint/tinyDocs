@@ -1,8 +1,14 @@
 Hello there!
 
-<b>Welcome</b> to this simple page!
+*Welcome* to this simple page!
 to create a new page, clone docs/helloworld/ as something else
-and edit index.tny to your liking.
+and edit index.tinywiki to your liking.
+
+<u>To use TinyWiki, you *Don't* need any experience with HTML or CSS.</u>
+
+_Note that: file paths are relative._
+
+<link href="https://github.com/vortexdevsoftware/tiny-wiki">Tiny-Wiki Repository</link>
 
 here's some lua code:
 <code lang="lua">
