@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>$wiki_name</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="js\styles\atom-one-dark.min.css">
+<script src="js\highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body>
+<div class="sidebar">
+    <!--wiki name div-->
+    <div class="sidebar-wiki-name">
+        <p>$wiki_name</p>
+    </div>
+    <!--wiki auto-generated buttons div-->
+    <div class="sidebar-list">
+        <input type="text" class="sidebar-search" id="search-input" placeholder="Search">
+        <a href="index.html">Home</a>
+        <a href="index.html">Foo</a>
+        <a href="index.html">Bar</a>
+        <a href="index.html">Baz</a>
+        <a href="index.html">Qux</a>
+        <a href="index.html">Quux</a>
+        <a href="index.html">Quuz</a>
+        <a href="index.html">Corge</a>
+        <a href="index.html">Grault</a>
+        <a href="index.html">Garply</a>
+        <a href="index.html">Waldo</a>
+    </div>
+</div>
+<div class="content">
+    <div class="content-topbar">
+        <div class="content-current-page">
+            <h1>$current_page_link</h1>
+        </div>
+    </div>
+    <div class="content-container">
+        <p>Epic text</p>
+        <p>Epic text on another line</p>
+        <pre>
+            <code class="language-lua">print('Hello world!')
+-- hello again
+            </code>
+        </pre>
+    </div>
+</div>
+<script>
+    // one-row checker pattern
+    var sidebar_list = document.getElementsByClassName("sidebar-list")[0];
+    var sidebar_list_a = sidebar_list.getElementsByTagName("a");
+    for (var i = 0; i < sidebar_list_a.length; i++) {
+        if (i % 2 == 1) {
+            sidebar_list_a[i].style.backgroundColor = "#0b0c0c";
+        }
+    }
+    // search bar, hides non-matching links
+    var sidebar_search = document.getElementById("search-input");
+    sidebar_search.addEventListener("keyup", function(event) {
+        var search_input = event.target.value;
+        var sidebar_list_a = sidebar_list.getElementsByTagName("a");
+        for (var i = 0; i < sidebar_list_a.length; i++) {
+            if (sidebar_list_a[i].innerHTML.toLowerCase().indexOf(search_input.toLowerCase()) == -1) {
+                sidebar_list_a[i].style.display = "none";
+            } else {
+                sidebar_list_a[i].style.display = "block";
+            }
+        }
+    });
+</script>
+</body>
+</html>
