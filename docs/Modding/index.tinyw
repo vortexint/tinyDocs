@@ -2,7 +2,7 @@ Hello there!
 
 *Welcome* to this simple page!
 to create a new page, clone docs/helloworld/ as something else
-and edit index.tinywiki to your liking.
+and edit index.tinyw to your liking.
 
 <u>To use TinyWiki, you *Don't* need any experience with HTML or CSS.</u>
 
@@ -19,6 +19,6 @@ print("hello world!")
 
 # inside this source file, you can notice that TNY resembles HTML,
 # however it is not HTML and it is not a valid HTML document either.
-# these tags have been chosen for TNY for simplicity. Tiny-Wiki
-# only provides a subset of the HTML tags, with some other custom
+# these tags have been chosen for Tiny-Wiki for simplicity.
+# Tiny-Wiki only provides a subset of the HTML tags, with some other custom
 # tags and features.
