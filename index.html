@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>$wiki_name</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="sidebar">
+    <!--wiki name div-->
+    <div class="sidebar-wiki-name">
+        <p>$wiki_name</p>
+    </div>
+    <div class="sidebar-list">
+        <a href="index.html">Home</a><a href="index.html">B</a><a href="index.html">C</a><a href="index.html">D</a><a href="index.html">Home</a><a href="index.html">Home</a><a href="index.html">Home</a><a href="index.html">Home</a><a href="index.html">Home</a><a href="index.html">Home</a><a href="index.html">Home</a><a href="index.html">Home</a><a href="index.html">Home</a><a href="index.html">Home</a><a href="index.html">Home</a><a href="index.html">Home</a><a href="index.html">Home</a><a href="index.html">Home</a><a href="index.html">Home</a><a href="index.html">Home</a><a href="index.html">Home</a><a href="index.html">Home</a><a href="index.html">Home</a><a href="index.html">Home</a><a href="index.html">Z</a>
+    </div>
+</div>
+<script>
+    // for each <a> in sidebar-list, check if it is divisible by 2
+    // if it is, make it a darker background color
+    var sidebar_list = document.getElementsByClassName("sidebar-list")[0];
+    var sidebar_list_a = sidebar_list.getElementsByTagName("a");
+    for (var i = 0; i < sidebar_list_a.length; i++) {
+        if (i % 2 == 0) {
+            sidebar_list_a[i].style.backgroundColor = "#0b0c0c";
+        }
+    }
+</script>
+</body>
+</html>
