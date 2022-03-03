@@ -1,0 +1,22 @@
+Hello there!
+
+*Welcome* to this simple page!
+to create a new page, clone docs/helloworld/ as something else
+and edit index.tinywiki to your liking.
+
+<u>To use TinyWiki, you *Don't* need any experience with HTML or CSS.</u>
+
+_Note that: file paths are relative._
+
+<link="https://github.com/vortexdevsoftware/tiny-wiki">Tiny-Wiki Repository</link>
+
+here's some lua code:
+<code lang="lua">
+print("hello world!")
+</code>
+
+# inside this source file, you can notice that TNY resembles HTML,
+# however it is not HTML and it is not a valid HTML document either.
+# these tags have been chosen for TNY for simplicity. Tiny-Wiki
+# only provides a subset of the HTML tags, with some other custom
+# tags and features.
