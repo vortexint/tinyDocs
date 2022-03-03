@@ -4,17 +4,17 @@ language and highlight.js syntax highlighting.
 
 # .tinyw syntax
 tinyw is a work-in-progress simple markup language, it aims to provide a simple standardized way to
-write documentation for tiny-wiki.
+write code documentation.
 
 ## Syntax:
 ```
 # comment
 
-<code lang="lua">
+<code="lua">
 -- lua code
 </code>
 
-<code lang="cpp">
+<code="cpp">
 // cpp code
 </code>
 
@@ -28,7 +28,7 @@ _*bold and italic*_
 
 <s>strikethrough text</s>
 
-<img src="image.png">
+<img="image.png">
 
 <link="http://example.com">link text</link>
 

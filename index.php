@@ -17,7 +17,8 @@
 // <u>underline text</u>
 // <s>strikethrough text</s>
 // <img src="image.png">
-// <link href="http://example.com">link text</link>
+// <link="http://example.com">link text</link>
+// <html>html code</html>
 // # comment
 
 // The left sidebar is a list of folders with an index.tny file at the root/docs/ folder.
