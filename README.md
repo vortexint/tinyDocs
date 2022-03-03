@@ -2,7 +2,7 @@
 Mad simple PHP wiki engine for auto-generating code documentation webpage with it's own markup
 language and highlight.js syntax highlighting.
 
-# .tinyw syntax
+# .tinyw file
 tinyw is a work-in-progress simple markup language, it aims to provide a simple standardized way to
 write code documentation.
 
