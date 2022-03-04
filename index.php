@@ -25,18 +25,20 @@
 
 // USER-DEFINED Variables
 $wiki_name = "Tiny-wiki";
-$wiki_description = "A PHP-based code wiki engine system for simple documentation.";
-$wiki_author = "Vortex-dev";
+$wiki_description = "A comprehensive folder-structure-based wiki engine for simple documentation.";
 
 // Don't change anything below unless you know what you're doing.
 
 // page url example:
 // docs/hello/index.tinyw would be displayed as: http://example.com/wiki?p=hello
 // docs/hello/world/index.tinyw would be displayed as: http://example.com/wiki?p=hello/world
-// docs/index.tny would be displayed as: http://example.com/wiki
 
 $current_link = $_SERVER['REQUEST_URI'];
-$page = substr($current_link, strpos($current_link, "?p=") + 3);
+if (strpos($current_link, "?p=") !== false) {
+    $page = substr($current_link, strpos($current_link, "?p=") + 3);
+} else {
+    $page = "";
+}
 
 // .TinyW parser at bin/tinywparse.php
 include "bin/tinywparse.php";
@@ -49,7 +51,7 @@ include "bin/Parsedown.php";
 echo '<!DOCTYPE html>';
 echo '<html>';
 echo '<head>';
-echo '<title>$wiki_name</title>';
+echo '<title>' . $wiki_name . '</title>';
 echo '<meta charset="utf-8">';
 echo '<meta name="viewport" content="width=device-width, initial-scale=1">';
 echo '<link rel="stylesheet" href="resources\style.css">';
@@ -66,14 +68,23 @@ echo '</div>';
 echo '<!--wiki auto-generated buttons div-->';
 echo '<div class="sidebar-list">';
 echo '<input type="text" class="sidebar-search" id="search-input" placeholder="Search">';
-echo '<a href="index.php">Home</a>';
 // for each folder in root/docs/
 $folders = scandir("docs");
 foreach ($folders as $folder) {
     if ($folder != "." && $folder != "..") {
+        // if folder's name is "Home"
+        if ($folder == "Home")
+            continue;
+        // if folder has config.ini, set $folder to value after "page_name:" in config.ini
+        if (file_exists("docs/" . $folder . "/config.ini")) {
+            $config = parse_ini_file("docs/" . $folder . "/config.ini");
+            $folder = $config["page_name"];
+            
+        }
         echo '<a href="?p=' . $folder . '">' . $folder . '</a>';	
     }
 }
+// alert the page and current page
 echo '</div>';
 echo '</div>';
 echo '<div class="content">';
@@ -84,23 +95,36 @@ echo '<h1><a href='.$current_link.'>'.$page.'</a></h1>';
 echo '</div>';
 echo '</div>';
 echo '<div class="content-container">';
-// look for docs/page/index.md, if exists, parse and echo (echo the parse)
-if (file_exists("docs/" . $page . "/index.md")) {
-    $file = file_get_contents("docs/" . $page . "/index.md");
-    $parsedown = new Parsedown();
-    echo $parsedown->text($file);
+// if $page is empty, echo the docs/Home/index.md or index.tinyw file
+if ($page == "") {
+    if (file_exists("docs/Home/index.md")) {
+        $file = file_get_contents("docs/Home/index.md");
+        $parsedown = new Parsedown();
+        echo $parsedown->text($file);
+    }
+    else if (file_exists("docs/Home/index.tinyw")) {
+        $file = file_get_contents("index.tinyw");
+        tinyw_parse($file);
+    }
+    else {
+        echo '<p>No Home page found.</p>';
+    }
 }
-// otherwise we use the tinyw parser if there is index.tinyw
-else if (file_exists("docs/" . $page . "/index.tinyw")) {
-    $file = file_get_contents("docs/" . $page . "/index.tinyw");
-    echo tinyw_parse($file);
-}
-// else if no index.md or index.tinyw, display a error
 else {
-    echo '<h1>TinyWiki ERR 01</h1>';
-    echo '<p>Index missing!</p>';
+    // if $page is not empty, echo the docs/page/index.md or index.tinyw file
+    if (file_exists("docs/" . $page . "/index.md")) {
+        $file = file_get_contents("docs/" . $page . "/index.md");
+        $parsedown = new Parsedown();
+        echo $parsedown->text($file);
+    }
+    else if (file_exists("docs/" . $page . "/index.tinyw")) {
+        $file = file_get_contents("docs/" . $page . "/index.tinyw");
+        tinyw_parse($file);
+    }
 }
-echo tinyw_parse(file_get_contents("docs/" . $page . "/index.tinyw"));
+// else parse docs/page/index.md / index.tinyw, and echo it if it exists,
+// otherwise page not found
+
 echo '</div>';
 echo '</div>';
 echo '<script>';
