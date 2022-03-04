@@ -1,6 +1,7 @@
 # tiny-wiki
-Mad simple PHP wiki engine for auto-generating code documentation webpage with it's own markup
-language and highlight.js syntax highlighting.
+Mad simple PHP wiki engine for auto-generating code documentation webpage with support for markdown
+using * [Parsedown](http://parsedown.org/) or alternatively it's own markup WIP language,
+also featuring highlight.js syntax highlighting.
 
 # .tinyw file
 tinyw is a work-in-progress simple markup language, it aims to provide a simple standardized way to
@@ -35,7 +36,7 @@ _*bold and italic*_
 <html><button>Custom HTML Button</button></html>
 ```
 
-# Dependencies
+# Running Dependencies
 * [PHP](https://secure.php.net/) >= 5.6.0
 
 # Setting up

@@ -23,7 +23,7 @@
 
 // The left sidebar is a list of folders with an index.tinyw file at the root/docs/ folder.
 
-// Variables
+// USER-DEFINED Variables
 $wiki_name = "Tiny-wiki";
 $wiki_description = "A PHP-based code wiki engine system for simple documentation.";
 $wiki_author = "Vortex-dev";
@@ -38,41 +38,11 @@ $wiki_author = "Vortex-dev";
 $current_link = $_SERVER['REQUEST_URI'];
 $page = substr($current_link, strpos($current_link, "?p=") + 3);
 
-// .TinyW parser
-// functionality:
-// echo parse_tinyw($text);
-// the parser will rewrite the text and replace all the tags with the appropriate html code
-function tinywparse($text) {
-    // check each line for a pair of opening and closing tags
-    // <code="language">source code</code> should translate to <pre><code class="language">source code</code></pre>
-    // <img="image.png"> should translate to <img src="image.png">
-    // <link="http://example.com">link text</link> should translate to <a href="http://example.com">link text</a>
-    // <html>html code</html> should get everything inside the tags
-    // <u>underline text</u> should translate to <u>underline text</u>
-    // <s>strikethrough text</s> should translate to <strike>strikethrough text</strike>
-    // *bold text* should translate to <b>bold text</b>
-    // _italic text_ should translate to <i>italic text</i>
+// .TinyW parser at bin/tinywparse.php
+include "bin/tinywparse.php";
 
-    // lines with no matches should just be added to the output
-
-    $output = $text;
-    // tags that open and close should just be replaced with their html equivalents using preg_replace
-    $output = preg_replace("/<code=\"(.*?)\">(.*?)<\/code>/", "<pre><code class=\"$1\">$2</code></pre>", $output);
-    $output = preg_replace("/<img=\"(.*?)\">/", "<img src=\"$1\">", $output);
-    $output = preg_replace("/<link=\"(.*?)\">(.*?)<\/link>/", "<a href=\"$1\">$2</a>", $output);
-    $output = preg_replace("/<html>(.*?)<\/html>/", "$1", $output);
-    $output = preg_replace("/<u>(.*?)<\/u>/", "<u>$1</u>", $output);
-    // if there are opening and closing * or _, they should be replaced with their html equivalents
-    $output = preg_replace("/\*(.*?)\*/", "<b>$1</b>", $output);
-    $output = preg_replace("/_(.*?)_/", "<i>$1</i>", $output);
-    // everything in the same line after a # (including the # but not the line break) should be made html comment
-    $output = preg_replace("/\#(.*?)\n/", "<!-- $1 -->\n", $output);
-    // newlines should be replaced with <br>
-    $output = preg_replace("/\n/", "<br>", $output);
-
-    return $output;
-    
-}
+// Parsedown
+include "bin/Parsedown.php";
 
 // set up html page
 
@@ -109,11 +79,28 @@ echo '</div>';
 echo '<div class="content">';
 echo '<div class="content-topbar">';
 echo '<div class="content-current-page">';
-echo '<h1><a href='.$current_link.'>'.$current_link.'</a></h1>';
+// link to current page and page title
+echo '<h1><a href='.$current_link.'>'.$page.'</a></h1>';
 echo '</div>';
 echo '</div>';
 echo '<div class="content-container">';
-echo tinywparse(file_get_contents("docs/" . $page . "/index.tinyw"));
+// look for docs/page/index.md, if exists, parse and echo (echo the parse)
+if (file_exists("docs/" . $page . "/index.md")) {
+    $file = file_get_contents("docs/" . $page . "/index.md");
+    $parsedown = new Parsedown();
+    echo $parsedown->text($file);
+}
+// otherwise we use the tinyw parser if there is index.tinyw
+else if (file_exists("docs/" . $page . "/index.tinyw")) {
+    $file = file_get_contents("docs/" . $page . "/index.tinyw");
+    echo tinyw_parse($file);
+}
+// else if no index.md or index.tinyw, display a error
+else {
+    echo '<h1>TinyWiki ERR 01</h1>';
+    echo '<p>Index missing!</p>';
+}
+echo tinyw_parse(file_get_contents("docs/" . $page . "/index.tinyw"));
 echo '</div>';
 echo '</div>';
 echo '<script>';
