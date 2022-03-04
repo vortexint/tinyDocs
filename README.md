@@ -7,6 +7,8 @@ Mad simple PHP folder structure based wiki engine for auto-generating code docum
 webpages with support for markdown using [Parsedown](http://parsedown.org/) or
 alternatively it's own markup WIP language, also featuring [Highlight.js](https://highlightjs.org/) for syntax highlighting.
 
+![image](https://user-images.githubusercontent.com/18470725/156728692-4895fca5-51ef-4c05-be2d-cf2caf147f70.png)
+
 # using .tinyw file
 tinyw is a work-in-progress simple markup language, it aims to provide a simple standardized way to
 write code documentation.
