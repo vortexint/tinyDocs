@@ -1,13 +1,13 @@
 <h1 align="center">TinyWiki</h1>
 <p align="center">
-  <img src="resources/tinywikilogo.png" width=64 />
+  <img src="resources/tinywikilogo.png" width=156 />
 </p>
 
 Mad simple PHP folder structure based wiki engine for auto-generating code documentation
 webpages with support for markdown using [Parsedown](http://parsedown.org/) or
 alternatively it's own markup WIP language, also featuring [Highlight.js](https://highlightjs.org/) for syntax highlighting.
 
-# .tinyw file
+# using .tinyw file
 tinyw is a work-in-progress simple markup language, it aims to provide a simple standardized way to
 write code documentation.
 
