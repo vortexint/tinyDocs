@@ -1,9 +1,13 @@
-# tiny-wiki
-Mad simple PHP wiki engine for auto-generating code documentation webpage with support for markdown
-using * [Parsedown](http://parsedown.org/) or alternatively it's own markup WIP language,
-also featuring highlight.js syntax highlighting.
+<h1 align="center">TinyWiki</h1>
+<p align="center">
+  <img src="resources/tinywikilogo.png" width=156 />
+</p>
 
-# .tinyw file
+Mad simple PHP folder structure based wiki engine for auto-generating code documentation
+webpages with support for markdown using [Parsedown](http://parsedown.org/) or
+alternatively it's own markup WIP language, also featuring [Highlight.js](https://highlightjs.org/) for syntax highlighting.
+
+# using .tinyw file
 tinyw is a work-in-progress simple markup language, it aims to provide a simple standardized way to
 write code documentation.
 
@@ -49,3 +53,4 @@ the ones you are free to hide from the web are:
  `bin/`
  `/docs/`
  `/resources/tinywikilogo.png`
+
