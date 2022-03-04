@@ -14,12 +14,12 @@ on:
         # Default value if no value is explicitly provided
         default: 'World'
         # Input has to be provided for the workflow to run
-        required: true
+        required: false
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "greet"
-  greet:
+  # This workflow contains a single job called "test"
+  test:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
