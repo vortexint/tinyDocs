@@ -49,4 +49,8 @@ files with other files.
 
 ## Permissions:
 By default you don't really need to modify the permissions on your server, but if you do want that,
-the only ones you should hide are the `/docs/` & `/resources/page.html` directory.
+<<<<<<< HEAD
+the ones you are free to hide from the web are:
+ `bin/`
+ `/docs/`
+ `/resources/tinywikilogo.png`
