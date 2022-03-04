@@ -78,10 +78,10 @@ foreach ($folders as $folder) {
         // if folder has config.ini, set $folder to value after "page_name =" in config.ini
         if (file_exists("docs/" . $folder . "/config.ini")) {
             $config = parse_ini_file("docs/" . $folder . "/config.ini");
-            $folder = $config["page_name"];
+            $folder_n = $config["page_name"];
 
         }
-        echo '<a href="?p=' . $folder . '">' . $folder . '</a>';	
+        echo '<a href="?p=' . $folder . '">' . $folder_n . '</a>';	
     }
 }
 // alert the page and current page
@@ -92,6 +92,8 @@ echo '<div class="content-topbar">';
 echo '<div class="content-current-page">';
 // link to current page and page title
 echo '<h1><a href='.$current_link.'>'.$page.'</a></h1>';
+// alert current link
+echo '<script>alert("'.$current_link.'");</script>';
 echo '</div>';
 echo '</div>';
 echo '<div class="content-container">';
