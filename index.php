@@ -84,16 +84,13 @@ foreach ($folders as $folder) {
         echo '<a href="?p=' . $folder . '">' . $folder_n . '</a>';	
     }
 }
-// alert the page and current page
 echo '</div>';
 echo '</div>';
 echo '<div class="content">';
 echo '<div class="content-topbar">';
 echo '<div class="content-current-page">';
 // link to current page and page title
-echo '<h1><a href='.$current_link.'>'.$page.'</a></h1>';
-// alert current link
-echo '<script>alert("'.$current_link.'");</script>';
+echo '<h1><a href='.$current_link.'>'.$folder_n.'</a></h1>';
 echo '</div>';
 echo '</div>';
 echo '<div class="content-container">';
