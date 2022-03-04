@@ -75,11 +75,11 @@ foreach ($folders as $folder) {
         // if folder's name is "Home"
         if ($folder == "Home")
             continue;
-        // if folder has config.ini, set $folder to value after "page_name:" in config.ini
+        // if folder has config.ini, set $folder to value after "page_name =" in config.ini
         if (file_exists("docs/" . $folder . "/config.ini")) {
             $config = parse_ini_file("docs/" . $folder . "/config.ini");
             $folder = $config["page_name"];
-            
+
         }
         echo '<a href="?p=' . $folder . '">' . $folder . '</a>';	
     }
