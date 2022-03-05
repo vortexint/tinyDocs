@@ -15,8 +15,9 @@ for syntax highlighting.</p>
 ![image](https://user-images.githubusercontent.com/18470725/156728692-4895fca5-51ef-4c05-be2d-cf2caf147f70.png)
 
 # Setting up
-1. Download the latest release, or lternatively if you want to be on the bleeding-edge with the
-latest features, you may download the repository directly and remove the unecessary files.
+1. Download the latest release, or alternatively if you want to be on the bleeding-edge with the
+latest features, you may download the repository directly and remove the unecessary files, but
+be aware that bugs should be expected outside of releases.
 2. After downloading the archive, extract it's contents into any (empty) directory of your
 website / webserver.
 3. Opening the webpage for the first time will come up with a configuration prompt.
