@@ -13,6 +13,17 @@ and also features an implementation of <a href="https://highlightjs.org/">Highli
 for syntax highlighting.</p>
 
 ![image](https://user-images.githubusercontent.com/18470725/156728692-4895fca5-51ef-4c05-be2d-cf2caf147f70.png)
+
+# Setting up
+1. Download the latest release, or lternatively if you want to be on the bleeding-edge with the
+latest features, you may download the repository directly and remove the unecessary files.
+2. After downloading the archive, extract it's contents into any (empty) directory of your
+website / webserver.
+3. Opening the webpage for the first time will come up with a configuration prompt.
+
+# Running Dependencies
+* [PHP](https://secure.php.net/) >= 5.3.0 
+
 # using .tinyw file
 tinyw is a work-in-progress simple markup language, it aims to provide a simple standardized way to
 write code documentation.
@@ -45,13 +56,6 @@ _*bold and italic*_
 
 <html><button>Custom HTML Button</button></html>
 ```
-
-# Running Dependencies
-* [PHP](https://secure.php.net/) >= 5.6.0
-
-# Setting up
-Simply drag the source files to any directory of your website, it's not recommended to mix these
-files with other files.
 
 ## Permissions:
 By default you don't really need to modify the permissions on your server, but if you do want that,
