@@ -63,5 +63,4 @@ By default you don't really need to modify the permissions on your server, but i
 the ones you are free to hide from the web are:
  `bin/`
  `/docs/`
- `/resources/tinywikilogo.png`
 
