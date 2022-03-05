@@ -1,14 +1,18 @@
 <h1 align="center">TinyWiki</h1>
 <p align="center">
-  <img src="resources/tinywikilogo.png" width=156 />
+  <img src="resources/tinywikilogo.png" width=64 />
 </p>
+<p align="center">Folder structure-based PHP wiki documentation engine</p>
 
-Mad simple PHP folder structure based wiki engine for auto-generating code documentation
-webpages with support for markdown using [Parsedown](http://parsedown.org/) or
-alternatively it's own markup WIP language, also featuring [Highlight.js](https://highlightjs.org/) for syntax highlighting.
+<img src="https://img.shields.io/github/license/vortexdevsoftware/tiny-wiki"> <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/vortexdevsoftware/tiny-wiki/test"> <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/vortexdevsoftware/tiny-wiki/total">
+
+<p>This is a super simple PHP folder structure based wiki engine<br>
+for creating code documentation webpages with support for Markdown Language<br>
+using <a href="http://parsedown.org/">Parsedown</a> or alternatively it's own Work-in-Progress Markup language (.tinyw),<br>
+and also features an implementation of <a href="https://highlightjs.org/">Highlight.js</a>
+for syntax highlighting.</p>
 
 ![image](https://user-images.githubusercontent.com/18470725/156728692-4895fca5-51ef-4c05-be2d-cf2caf147f70.png)
-
 # using .tinyw file
 tinyw is a work-in-progress simple markup language, it aims to provide a simple standardized way to
 write code documentation.
