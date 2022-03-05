@@ -24,8 +24,15 @@
 // The left sidebar is a list of folders with an index.tinyw file at the root/docs/ folder.
 
 // USER-DEFINED Variables
-$wiki_name = "Tiny-wiki";
-$wiki_description = "A comprehensive folder-structure-based wiki engine for simple documentation.";
+// if resources/wikiconf.ini exists
+if (file_exists("resources/wikiconf.ini")) {
+    $wiki_config = parse_ini_file("resources/wikiconf.ini");
+    $wiki_name = $wiki_config['wiki_name'];
+    $wiki_description = $wiki_config['wiki_description'];
+    $wiki_color = $wiki_config['wiki_color'];
+    $wiki_default_theme = $wiki_config['wiki_default_theme'];
+    $wiki_favicon = $wiki_config['wiki_favicon'];
+}
 
 // Don't change anything below unless you know what you're doing.
 
@@ -40,60 +47,70 @@ if (strpos($current_link, "?p=") !== false) {
     $page = "";
 }
 
-// .TinyW parser at bin/tinywparse.php
+/* Include Parsers */
 include "bin/tinywparse.php";
-
-// Parsedown
 include "bin/Parsedown.php";
 
-// set up html page
+/* --- Page Setup --- */
 
-echo '<!DOCTYPE html>';
-echo '<html>';
-echo '<head>';
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<?php
 echo '<title>' . $wiki_name . '</title>';
-echo '<meta charset="utf-8">';
-echo '<meta name="viewport" content="width=device-width, initial-scale=1">';
-echo '<link rel="stylesheet" href="resources\style.css">';
-echo '<link rel="stylesheet" href="js\styles\atom-one-dark.min.css">';
-echo '<script src="js\highlight.min.js"></script>';
-echo '<script>hljs.highlightAll();</script>';
-echo '</head>';
-echo '<body>';
-echo '<div class="sidebar">';
-echo '<!--wiki name div-->';
-echo '<div class="sidebar-wiki-name">';
-echo '<p>' . $wiki_name . '</p>';
-echo '</div>';
-echo '<!--wiki auto-generated buttons div-->';
-echo '<div class="sidebar-list">';
-echo '<input type="text" class="sidebar-search" id="search-input" placeholder="Search">';
+if ($wiki_favicon != "") {
+    echo '<link rel="shortcut icon" href="resources\\' . $wiki_favicon . '">';
+}
+?>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="resources\style.css">
+<link rel="stylesheet" href="js\styles\atom-one-dark.min.css">
+<script src="js\highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body>
+<div class="sidebar" name="second-color">
+<!--wiki name div-->
+<div class="sidebar-wiki-name" name="second-color">
+<?php
+echo '<p><a href="?p=home">' . $wiki_name . '</a></p>';?>
+</div>
+<!--wiki auto-generated buttons div-->
+<div class="sidebar-list">
+<input type="text" class="sidebar-search" id="search-input" placeholder="Search">
+<?php
 // for each folder in root/docs/
 $folders = scandir("docs");
 foreach ($folders as $folder) {
     if ($folder != "." && $folder != "..") {
+        $config = parse_ini_file("docs/" . $folder . "/config.ini");
         // if folder's name is "Home"
-        if ($folder == "Home")
+        if ($folder == "Home") 
+        {
+            $folder_n = $config["page_name"];
             continue;
+        }
         // if folder has config.ini, set $folder to value after "page_name =" in config.ini
         if (file_exists("docs/" . $folder . "/config.ini")) {
-            $config = parse_ini_file("docs/" . $folder . "/config.ini");
             $folder_n = $config["page_name"];
-
         }
         echo '<a href="?p=' . $folder . '">' . $folder_n . '</a>';	
     }
-}
-echo '</div>';
-echo '</div>';
-echo '<div class="content">';
-echo '<div class="content-topbar">';
-echo '<div class="content-current-page">';
+}?>
+</div>
+</div>
+<div class="content">
+<div class="content-topbar">
+<div class="content-current-page">
+<?php
 // link to current page and page title
-echo '<h1><a href='.$current_link.'>'.$folder_n.'</a></h1>';
-echo '</div>';
-echo '</div>';
-echo '<div class="content-container">';
+echo '<h1><a href='.$current_link.'>'.$folder_n.'</a></h1>';?>
+</div>
+</div>
+<div class="content-container">
+<?php
 // if $page is empty, echo the docs/Home/index.md or index.tinyw file
 if ($page == "") {
     if (file_exists("docs/Home/index.md")) {
@@ -121,35 +138,38 @@ else {
         tinyw_parse($file);
     }
 }
-// else parse docs/page/index.md / index.tinyw, and echo it if it exists,
-// otherwise page not found
-
-echo '</div>';
-echo '</div>';
-echo '<script>';
-echo 'var sidebar_list = document.getElementsByClassName("sidebar-list")[0];';
-echo 'var sidebar_list_a = sidebar_list.getElementsByTagName("a");';
-echo 'for (var i = 0; i < sidebar_list_a.length; i++) {';
-echo 'if (i % 2 == 1) {';
-echo 'sidebar_list_a[i].style.backgroundColor = "#0b0c0c";';
-echo '}';
-echo '}';
-echo '// search bar, hides non-matching links';
-echo 'var sidebar_search = document.getElementById("search-input");';
-echo 'sidebar_search.addEventListener("keyup", function(event) {';
-echo 'var search_input = event.target.value;';
-echo 'var sidebar_list_a = sidebar_list.getElementsByTagName("a");';
-echo 'for (var i = 0; i < sidebar_list_a.length; i++) {';
-echo 'if (sidebar_list_a[i].innerHTML.toLowerCase().indexOf(search_input.toLowerCase()) == -1) {';
-echo 'sidebar_list_a[i].style.display = "none";';
-echo '} else {';
-echo 'sidebar_list_a[i].style.display = "block";';
-echo '}';
-echo '}';
-echo '});';
-echo '</script>';
-echo '</body>';
-echo '</html>';
-
-// end php
 ?>
+</div>
+</div>
+<script>
+var sidebar_list = document.getElementsByClassName("sidebar-list")[0];
+var sidebar_list_a = sidebar_list.getElementsByTagName("a");
+for (var i = 0; i < sidebar_list_a.length; i++) {
+    if (i % 2 == 1) {
+        sidebar_list_a[i].style.backgroundColor = "#0b0c0c";
+    }
+}
+// search bar, hides non-matching links';
+var sidebar_search = document.getElementById("search-input");
+sidebar_search.addEventListener("keyup", function(event) {
+var search_input = event.target.value;
+var sidebar_list_a = sidebar_list.getElementsByTagName("a");
+for (var i = 0; i < sidebar_list_a.length; i++) {
+    if (sidebar_list_a[i].innerHTML.toLowerCase().indexOf(search_input.toLowerCase()) == -1) {
+        sidebar_list_a[i].style.display = "none";
+    }
+    else {
+        sidebar_list_a[i].style.display = "block";
+    }
+}
+}
+);
+// Make elements with id="second-color" have the second color
+// get elements by name
+var second_colors = document.getElementsByName("second-color");
+for (var i = 0; i < second_colors.length; i++) {
+    second_colors[i].style.background = "<?php echo $wiki_color; ?>";
+}
+</script>
+</body>
+</html>
