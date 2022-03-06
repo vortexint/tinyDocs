@@ -77,7 +77,7 @@ if ($wiki_favicon != "") {
 <!--wiki name div-->
 <div class="sidebar-wiki-name" name="second-color">
 <?php
-echo '<p><a href="?p=home">' . $wiki_name . '</a></p>';?>
+echo '<p><a href="?p=Home">' . $wiki_name . '</a></p>';?>
 </div>
 <!--wiki auto-generated buttons div-->
 <div class="sidebar-list">
