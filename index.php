@@ -66,7 +66,7 @@ if ($wiki_favicon != "") {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <?php
-    echo '<link rel="stylesheet" href="resources/' . $wiki_default_theme . '">';
+    echo '<link rel="stylesheet" href="resources\\' . $wiki_default_theme . '.css">';
 ?>
 <link rel="stylesheet" href="js\styles\atom-one-dark.min.css">
 <script src="js\highlight.min.js"></script>
@@ -134,8 +134,13 @@ foreach ($folders as $folder) {
 <div class="content-current-page">
 <?php
 // link to current page and page title
-$current_page_ini = parse_ini_file("docs/" . $page . "/config.ini");
-echo '<h1><a href='.$current_link.'>' . $current_page_ini["page_name"] . '</a></h1>';
+if ($page == "") {
+    $current_page_ini = parse_ini_file("docs/Home/config.ini");
+    echo '<h1><a href='.$current_link.'>' . $current_page_ini["page_name"] . '</a></h1>';;
+} else {
+    $current_page_ini = parse_ini_file("docs/" . $page . "/config.ini");
+    echo '<h1><a href='.$current_link.'>' . $current_page_ini["page_name"] . '</a></h1>';
+}
 ?>
 </div>
 </div>
