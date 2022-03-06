@@ -26,14 +26,20 @@
 // USER-DEFINED Variables
 // if resources/wikiconf.ini exists
 if (file_exists("resources/wikiconf.ini")) {
+    $has_config = true;
     $wiki_config = parse_ini_file("resources/wikiconf.ini");
     $wiki_name = $wiki_config['wiki_name'];
     $wiki_description = $wiki_config['wiki_description'];
     $wiki_color = $wiki_config['wiki_color'];
     $wiki_default_theme = $wiki_config['wiki_default_theme'];
-    $wiki_favicon = $wiki_config['wiki_favicon'];
 }
-
+else {
+    $has_config = false; 
+    $wiki_name = "Tiny-wiki";
+    $wiki_description = "A simple folder-structure-based wiki engine";
+    $wiki_color = "#0099ff";
+    $wiki_default_theme = "default";
+}
 // Don't change anything below unless you know what you're doing.
 
 // page url example:
@@ -53,15 +59,77 @@ include "bin/Parsedown.php";
 
 /* --- Page Setup --- */
 
+if (!$has_config) {
+    // For obvious security reasons, the POST check should only be done if the wikiconf file doesn't exist
+    // otherwise people could just reconfigure the site easily with POST data, crazy right?
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // collect value of form
+        $wiki_name = $_POST['wiki_name'];
+        $wiki_description = $_POST['wiki_description'];
+        $wiki_color = $_POST['wiki_color'];
+        $wiki_default_theme = $_POST['wiki_default_theme'];
+        // write to ini file
+        $file = fopen("resources\wikiconf.ini", "w") or die("Unable to open file!");
+        fwrite($file, "wiki_name = \"$wiki_name\"\n");
+        fwrite($file, "wiki_description = \"$wiki_description\"\n");
+        fwrite($file, "wiki_color = \"$wiki_color\"\n");
+        fwrite($file, "wiki_default_theme = \"$wiki_default_theme\"\n");
+        fclose($file);
+    }
+    // Setup page basically
+    echo "<link rel='stylesheet' href='resources/default.css' type='text/css' />";
+    echo "<div class='setup-page'>";
+    echo "<h1>Welcome to Tiny-wiki!</h1>";
+    echo "<p>It looks like this is the first time you are using Tiny-Wiki.</p>";
+    echo "<p>To make this part pleasant, we've made this configuration form for you!</p>";
+    echo "<p>Configure your wiki using the options below.</p>";
+    echo "<form action='index.php' method='POST' enctype='multipart/form-data'>";
+    echo "<label for='wiki_name'>Wiki Name:</label>";
+    echo "<input type='text' class='inputfield' name='wiki_name' value='$wiki_name' placeholder='Wiki Name'><br>";
+    echo "<label for='wiki_description'>Wiki Description:</label>";
+    echo "<input type='textarea' class='inputfield' name='wiki_description' value='$wiki_description' placeholder='Wiki Description'><br>";
+    echo "<label for='wiki_color'>Wiki Secondary Color:</label>";
+    echo "<input type='color' class='inputfield' name='wiki_color' value='$wiki_color'><br>";
+    echo "<label for='wiki_default_theme'>Wiki Default Cascading Style Sheet:</label>";
+    echo "<input type='text' class='inputfield' name='wiki_default_theme' value='$wiki_default_theme' placeholder='default.css'><br>";
+    echo "<label for='setup'>You can change these settings later at resources/wikiconf.ini, press Setup when done.</label>";
+    echo "<input type='submit' class='setup' name='setup' value='Setup'>";
+    echo "<script>
+    // post setup form data to resources/config.php when submit button is clicked
+    document.getElementsByClassName('setup')[0].addEventListener('click', function(e) {
+        e.preventDefault();
+        var wiki_name = document.getElementsByName('wiki_name')[0].value;
+        var wiki_description = document.getElementsByName('wiki_description')[0].value;
+        var wiki_color = document.getElementsByName('wiki_color')[0].value;
+        var wiki_default_theme = document.getElementsByName('wiki_default_theme')[0].value;
+        var formData = new FormData();
+        formData.append('wiki_name', wiki_name);
+        formData.append('wiki_description', wiki_description);
+        formData.append('wiki_color', wiki_color);
+        formData.append('wiki_default_theme', wiki_default_theme);
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'index.php', true);
+        xhr.send(formData);
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                window.location.href = 'index.php';
+            }
+        }
+    });
+    </script>";
+    echo "</form>";
+    echo "</div>";
+    // script to POST the form data to resources/config.php
+
+    return;
+}    
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 <?php
 echo '<title>' . $wiki_name . '</title>';
-if ($wiki_favicon != "") {
-    echo '<link rel="shortcut icon" href="resources\\' . $wiki_favicon . '">';
-}
+echo '<link rel="shortcut icon" href="resources\\favicon.png">';
 ?>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -77,7 +145,9 @@ if ($wiki_favicon != "") {
 <!--wiki name div-->
 <div class="sidebar-wiki-name" name="second-color">
 <?php
-echo '<p><a href="?p=Home">' . $wiki_name . '</a></p>';?>
+echo '<h1><a href="?p=Home">' . $wiki_name . '</a></h1>';
+echo '<p>' . $wiki_description . '</p>';
+?>
 </div>
 <!--wiki auto-generated buttons div-->
 <div class="sidebar-list">
