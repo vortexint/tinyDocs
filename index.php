@@ -98,7 +98,33 @@ foreach ($folders as $folder) {
         if (file_exists("docs/" . $folder . "/config.ini")) {
             $folder_n = $config["page_name"];
         }
-        echo '<a href="?p=' . $folder . '">' . $folder_n . '</a>';	
+        echo '<a class="page" href="?p=' . $folder . '">' . $folder_n . '</a>';
+        // check for all subfolders in folder, count for index and if they have a config.ini
+        // if the subfolder has a config.ini, set $config to parse config.ini
+        // if it's not the last subfolder, add ├ before $folder_n
+        // if it's the last subfolder, add └ before $folder_n
+        $subfolders = scandir("docs/" . $folder);
+        $real_subfolders = array();
+        // count all subfolders
+        foreach ($subfolders as $subfolder) {
+            if ($subfolder != "." && $subfolder != ".." && is_dir("docs/" . $folder . "/" . $subfolder)) {
+                array_push($real_subfolders, $subfolder);
+            }
+        }
+        foreach ($real_subfolders as $subfolder) {
+            if (file_exists("docs/" . $folder . "/" . $subfolder . "/config.ini")) {
+                $config = parse_ini_file("docs/" . $folder . "/" . $subfolder . "/config.ini");
+                $folder_n = $config["page_name"];
+            } else {
+                $folder_n = "ERR NO CONFIG.INI";
+            }
+            if ($subfolder == $real_subfolders[count($real_subfolders) - 1]) {
+                echo '<a class="subpage" href="?p=' . $folder . '/' . $subfolder . '">└ ' . $folder_n . '</a>';
+            } else {
+                echo '<a class="subpage" href="?p=' . $folder . '/' . $subfolder . '">├ ' . $folder_n . '</a>';
+            }
+        }
+        
     }
 }?>
 </div>
@@ -108,7 +134,9 @@ foreach ($folders as $folder) {
 <div class="content-current-page">
 <?php
 // link to current page and page title
-echo '<h1><a href='.$current_link.'>'.$folder_n.'</a></h1>';?>
+$current_page_ini = parse_ini_file("docs/" . $page . "/config.ini");
+echo '<h1><a href='.$current_link.'>' . $current_page_ini["page_name"] . '</a></h1>';
+?>
 </div>
 </div>
 <div class="content-container">
@@ -146,11 +174,6 @@ else {
 <script>
 var sidebar_list = document.getElementsByClassName("sidebar-list")[0];
 var sidebar_list_a = sidebar_list.getElementsByTagName("a");
-for (var i = 0; i < sidebar_list_a.length; i++) {
-    if (i % 2 == 1) {
-        sidebar_list_a[i].style.backgroundColor = "#0b0c0c";
-    }
-}
 // search bar, hides non-matching links';
 var sidebar_search = document.getElementById("search-input");
 sidebar_search.addEventListener("keyup", function(event) {

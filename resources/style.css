@@ -82,22 +82,45 @@ table, td, th {
     text-align: left;
 }
 
-/* sidebar link modern, 100% width, vertical padding, no margin */
-.sidebar-list a {
+/* sidebar page button modern */
+.sidebar-list .page {
     display: block;
     width: 100%;
-    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    text-decoration: none;
+    border-top: #222222 2px solid;
+    border-bottom: #222222 2px solid;
+    color: #fff;
+    /* animation */
+    transition: all 0.1s ease-in-out;
+}
+.sidebar-list .page:hover {
+    background-color: #a1a1a1
+}
+
+.sidebar-list .page:active {
+    background-color: #ffffff;
+}
+
+/* sidebar subpage */
+.sidebar-list .subpage {
+    display: block;
+    width: 100%;
+    padding-left: 15px;
+    background-color: #0d0e0f;
     text-decoration: none;
     color: #fff;
     /* animation */
     transition: all 0.1s ease-in-out;
 }
-.sidebar-list a:hover {
+.sidebar-list .subpage:hover {
     background-color: #a1a1a1
 }
 
-.sidebar-list a:active {
-    background-color: #ffffff
+.sidebar-list .subpage:active {
+    background-color: #ffffff;
 }
 
 .content {

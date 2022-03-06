@@ -20,7 +20,7 @@ latest features, you may download the repository directly and remove the unecess
 be aware that bugs should be expected outside of releases.
 2. After downloading the archive, extract it's contents into any (empty) directory of your
 website / webserver.
-3. Opening the webpage for the first time will come up with a configuration prompt.
+3. Opening the webpage for the first time should come up with a configuration prompt. (Alternatively you can change the configs manually)
 
 # Running Dependencies
 * [PHP](https://secure.php.net/) >= 5.3.0 
