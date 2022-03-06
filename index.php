@@ -65,7 +65,7 @@ if ($wiki_favicon != "") {
 ?>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="resources\style.css">
+<link rel="stylesheet" href="resources\" <?php echo $wiki_default_theme; ?>">
 <link rel="stylesheet" href="js\styles\atom-one-dark.min.css">
 <script src="js\highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
