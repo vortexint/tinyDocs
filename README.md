@@ -12,7 +12,7 @@ using <a href="http://parsedown.org/">Parsedown</a> or alternatively it's own Wo
 and also features an implementation of <a href="https://highlightjs.org/">Highlight.js</a>
 for syntax highlighting.</p>
 
-![image](https://user-images.githubusercontent.com/18470725/156728692-4895fca5-51ef-4c05-be2d-cf2caf147f70.png)
+![image](https://user-images.githubusercontent.com/18470725/156927079-2dcae255-1cec-4280-b3e9-444f979bdabb.png)
 
 # Setting up
 1. Download the latest release, or alternatively if you want to be on the bleeding-edge with the
