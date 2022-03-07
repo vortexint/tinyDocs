@@ -1,6 +1,6 @@
 <h1 align="center">TinyWiki</h1>
 <p align="center">
-  <img src="resources/tinywikilogo.png" width=64 />
+  <img src="resources/favicon.png" width=64 />
 </p>
 <p align="center">Folder structure-based PHP wiki documentation engine</p>
 
