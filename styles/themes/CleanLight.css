@@ -1,0 +1,10 @@
+@font-face {
+  font-family: FiraCode;
+  src: url('../fonts/FiraCode-Regular.woff');
+}
+
+body {
+  background-color: #fff;
+  color: #000;
+  font-family: FiraCode !important;
+}

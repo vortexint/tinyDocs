@@ -21,14 +21,14 @@ Are you looking for a simple way to document anything?
 ## Modules
 *TinyDocs* offers a module system: small PHP packages that add or change functionality, such as the table of contents, search bar, and sub-title, they are located in the `Modules/` directory
 
-You can write or edit modules yourself with minimal coding knowledge, if you prefer not to use certain modules, simply remove them from the config.yml file.
+You can write or edit modules yourself with minimal coding knowledge, if you prefer not to use certain modules, simply remove them from the config.ini file.
 
 ## Setting up
 In order to configure TinyDocs you will need to upload the files to your web server, if this is a limited operation for you, you can set it up before uploading it.
 
 1. Download it
 2. Copy the contents the repository into the subdirectory of your website you want your installation to reside.
-3. Configure the style by modifying the `config.yml` file.
+3. Configure the style by modifying the `config.ini` file.
 4. Add your Markdown files to the pages/ directory, organizing them into folders if you wish to create categories.
 
 ## Dependencies
