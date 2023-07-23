@@ -1,66 +1,35 @@
-<h1 align="center">TinyWiki</h1>
+<h1 align="center">TinyDocs</h1>
+<img src="https://img.shields.io/github/license/vortexdevsoftware/tiny-wiki"> <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/vortexdevsoftware/tiny-wiki/total">
 <p align="center">
-  <img src="resources/favicon.png" width=64 />
+  <img src="favicon.png" width=64 />
 </p>
-<p align="center">Folder structure-based PHP wiki documentation engine</p>
+<p align="center">Flat-file CMS engine with search</p>
 
-<img src="https://img.shields.io/github/license/vortexdevsoftware/tiny-wiki"> <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/vortexdevsoftware/tiny-wiki/test"> <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/vortexdevsoftware/tiny-wiki/total">
+Create documentation webpages with Markdown, syntax highlighting with [Highlight.js](https://highlightjs.org/)
 
-<p>This is a super simple PHP folder structure based wiki engine<br>
-for creating code documentation webpages with support for Markdown Language<br>
-using <a href="http://parsedown.org/">Parsedown</a> or alternatively it's own Work-in-Progress Markup language (.tinyw),<br>
-and also features an implementation of <a href="https://highlightjs.org/">Highlight.js</a>
-for syntax highlighting.</p>
+## Why use TinyDocs?
+Are you looking for a simple way to document anything?
 
-![image](https://user-images.githubusercontent.com/18470725/156927079-2dcae255-1cec-4280-b3e9-444f979bdabb.png)
+*TinyDocs* was made with this goal in mind, here's why you would want to use it.
+1.  🚀 **Highly Portable**: *TinyDocs* is designed to be lightweight and easy to move or deploy across different environments.
+2. ✨ **Fresh and Simple**: *TinyDocs* includes only the essential features needed to get started, ensuring a clean and straightforward experience.
+3. 🔒 **Safe**: With no database queries, *TinyDocs* guarantees a completely secure documentation environment.
+4. 🎨 **Customizable**: You have the flexibility to edit hard-coded text in the configuration and use the provided CSS stylesheets or create your own to customize the installation according to your preferences.
+5. 🧩 **Scalable**: *TinyDocs* provides a scalable solution, allowing your documentation to grow and expand as needed to accommodate changes and additions.
+6. 📝 **Documented**: Everything that you would want to change is documented in the source code.
 
-# Setting up
-1. Download the latest release, or alternatively if you want to be on the bleeding-edge with the
-latest features, you may download the repository directly and remove the unecessary files, but
-be aware that bugs should be expected outside of releases.
-2. After downloading the archive, extract it's contents into any (empty) directory of your
-website / webserver.
-3. Opening the webpage for the first time should come up with a configuration prompt. (Alternatively you can change the configs manually)
+## Modules
+*TinyDocs* offers a module system: small PHP packages that add or change functionality, such as the table of contents, search bar, and sub-title, they are located in the `Modules/` directory
 
-# Running Dependencies
+You can write or edit modules yourself with minimal coding knowledge, if you prefer not to use certain modules, simply remove them from the config.yml file.
+
+## Setting up
+In order to configure TinyDocs you will need to upload the files to your web server, if this is a limited operation for you, you can set it up before uploading it.
+
+1. Download it
+2. Copy the contents the repository into the subdirectory of your website you want your installation to reside.
+3. Configure the style by modifying the `config.yml` file.
+4. Add your Markdown files to the pages/ directory, organizing them into folders if you wish to create categories.
+
+## Dependencies
 * [PHP](https://secure.php.net/) >= 5.3.0 
-
-# using .tinyw file
-tinyw is a work-in-progress simple markup language, it aims to provide a simple standardized way to
-write code documentation.
-
-## Syntax:
-```
-# comment
-
-<code="lua">
--- lua code
-</code>
-
-<code="cpp">
-// cpp code
-</code>
-
-*bold text*
-
-_italic text_
-
-_*bold and italic*_
-
-<u>underline text</u>
-
-<s>strikethrough text</s>
-
-<img="image.png">
-
-<link="http://example.com">link text</link>
-
-<html><button>Custom HTML Button</button></html>
-```
-
-## Permissions:
-By default you don't really need to modify the permissions on your server, but if you do want that,
-the ones you are free to hide from the web are:
- `bin/`
- `/docs/`
-
