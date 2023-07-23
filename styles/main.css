@@ -1,9 +1,47 @@
-@import url(normalize.css)
+@import url(normalize.css);
+
+:root,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background-color: #f0f0f0;
+  display: flex;
+}
 
 :root {
-  font-family: 'Courier New', Courier, monospace;
+  flex-direction: row;
+}
+
+/* Center column (content) */
+body > div:nth-child(2) {
+  width: 100%;
+}
+
+/* Left and right columns */
+body > div:nth-child(1), body > div:nth-child(3) {
+  width: 25%;
+}
+
+/* Content styles to fill the columns */
+body > div {
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+  body > div:nth-child(1), body > div:nth-child(3) {
+    width: 100%;
+  }
 }
 
 * {
-  border: 1px solid red outset;
+  border: 1px solid red;
 }
