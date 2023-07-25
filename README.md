@@ -38,10 +38,5 @@ In order to configure TinyDocs you will need to upload the files to your web ser
 4. Configure the style by modifying the `config.ini` file.
 5. Add your Markdown files to the pages/ directory, organizing them into folders if you wish to create categories.
 
-```diff
-- ! NOTICE ! -
-```
-Make sure that if you are using the adminstration 
-
 ## Dependencies
 * [PHP](https://secure.php.net/) >= 5.3.0 
