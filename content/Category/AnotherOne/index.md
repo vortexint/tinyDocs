@@ -1,6 +1,6 @@
 Stuff is getting crazy...
 
-[Main Page](/)
+[Home](/)
 
 |markdown| table|
 |--------|------|

@@ -25,7 +25,7 @@ If your category lacks an index file, the engine will automatically generate a c
 
 The `index.md` file is masked by the name of it's parent category.
 
-Here's an example: [?p=Category](?p=Category/)
+Here's an example: [?p=Category](?p=Category)
 
 ## Markdown
 *Markdown* is a lightweight markup language that is easy to read and write. It is widely used for formatting text on the web and is supported by many platforms and documentation tools, including TinyDocs.

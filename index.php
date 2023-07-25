@@ -17,7 +17,7 @@ $modules = explode(',', $ini['modules']);
 
 $page = isset($_GET['p']) ? $_GET['p'] : 'index'; // if nothing, default to index
 
-if(is_dir('content/'. $page)) // if this is true, it's a category
+if (is_dir('content/' . $page)) // if this is true, it's a category
     $page = $page . '/index';
 
 $md_path = 'content/' . $page . '.md';
@@ -42,8 +42,10 @@ function create_page_contents()
     if (!$GLOBALS['page_exists']) {
         ?>
         <h1>Error 404</h1>
-        <p>The page "<?php echo $GLOBALS['page']; ?>" does not exist.</p>
-        <p>Return to <a href="/">Main Page</a></p>
+        <p>The page "
+            <?php echo $GLOBALS['page']; ?>" does not exist.
+        </p>
+        <p>Return to <a href="/">Home</a></p>
         <?php
         return;
     }
@@ -67,7 +69,7 @@ function create_page_contents()
     ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
-    hljs.highlightAll();
+        hljs.highlightAll();
     </script>
 </head>
 
@@ -81,28 +83,34 @@ function create_page_contents()
         <div class="navigation">
             <div class="left">
                 <p class="breadcrumbs">
-                <?php
-                // Breadcrumbs
-                $page = isset($_GET['p']) ? $_GET['p'] : '';
-                $breadcrumbs = explode('/', './' . $page);
-                $breadcrumbString = '';
+                    <?php
+                    // Breadcrumbs
+                    $page = isset($_GET['p']) ? $_GET['p'] : '';
+                    $breadcrumbs = explode('/', $page);
 
-                $currentPath = '';
-                $breadcrumbLinks = [];
+                    // Simplify conditional check
+                    if (count($breadcrumbs) === 1 && empty($breadcrumbs[0])) {
+                        // Home page
+                        echo '<a href="/">' . $title . '</a>';
+                    } else {
+                        $breadcrumbLinks = [];
+                        $currentPath = '';
 
-                foreach ($breadcrumbs as $breadcrumb) {
-                    if ($breadcrumb !== '') { // Skip empty breadcrumbs
-                        $currentPath .= $breadcrumb . '/';
-                        $breadcrumbLinks[] = '<a href="' . rtrim($currentPath, '/') . '">' . ucfirst($breadcrumb) . '</a>';
+                        foreach ($breadcrumbs as $breadcrumb) {
+                            // Use empty() to check for empty breadcrumbs
+                            if (!empty($breadcrumb)) {
+                                $currentPath .= '/' . $breadcrumb;
+                                $breadcrumbLinks[] = '<a href="' . ($currentPath === '/' ? '/' : '?p=' . ltrim($currentPath, '/')) . '">' . ucfirst($breadcrumb) . '</a>';
+                            }
+                        }
+                        echo '<a href="/">' . $title . '</a> / ' . implode(' / ', $breadcrumbLinks);
                     }
-                }
-
-                echo implode(' / ', $breadcrumbLinks);
-                ?>
+                    ?>
                 </p>
             </div>
             <div class="right">
-                <input type="search" placeholder="Search <?php echo $title?> "><input class="search" type="button" value="Search">
+                <input type="search" placeholder="Search <?php echo $title ?> "><input class="search" type="button"
+                    value="Search">
             </div>
         </div>
         <div class="content">
@@ -113,18 +121,20 @@ function create_page_contents()
         </div>
         <footer>
             <p>
-            <?php
-            if ($page_exists)
-                echo "Page last modified on " . date('F d Y H:i:s', filemtime($md_path))
-            ?></p>
-        </footer>
-    </div>
-    <!-- Right column -->
-    <div>
-        <p>Test</p>
-    </div>
-    <?php
-    echo $additionalBody;
-    ?>
+                <?php
+                if ($page_exists)
+                    echo "Page last modified on " . date('F d Y H:i:s', filemtime($md_path))
+                        ?>
+                </p>
+            </footer>
+        </div>
+        <!-- Right column -->
+        <div>
+            <p>Test</p>
+        </div>
+        <?php
+                echo $additionalBody;
+                ?>
 </body>
+
 </html>
