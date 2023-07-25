@@ -1,14 +1,6 @@
-@import url(normalize.css);
-
-:root,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
+/* @import url(normalize.css);*/
 
 body {
-  background-color: #f0f0f0;
   display: flex;
 }
 
@@ -33,15 +25,11 @@ body > div {
 }
 
 /* Responsive styles */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
   body {
     flex-direction: column;
   }
   body > div:nth-child(1), body > div:nth-child(3) {
     width: 100%;
   }
-}
-
-* {
-  border: 1px solid red;
 }

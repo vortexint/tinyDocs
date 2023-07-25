@@ -1,0 +1,89 @@
+body {
+  background-color: #f3f3f3;
+  color: #000;
+  font-family: sans-serif;
+  font-size: 0.8em;
+  line-height: 1.5em;
+  --border-color: rgb(162, 169, 177);
+}
+
+/* Headings */
+h1 {font-size: 188%}
+h2 {font-size: 150%}
+h3 {font-size: 132%}
+
+a {
+  color: #3366cc;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.content, .navigation {
+  display: flow-root;
+}
+
+.content {
+  background-color: #fff;
+  padding-left: 1em;
+  padding-right: 1em;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--border-color);
+  border-radius: 2px;
+}
+
+.navigation {
+  /* upwards inset shadow */
+  background: linear-gradient(0deg, #eeeeee 0%, #00000000 100%);
+}
+
+.navigation .right {
+  float:right;
+  margin-bottom: 0.5em;
+  border: solid 1px var(--border-color);
+  border-radius: 2px;
+}
+
+.navigation .right input {
+  border: none;
+  padding: 0.5em;
+}
+
+.navigation .right .search {
+  border-left: inherit;
+  font-weight: bold;
+  transition: .1s ease-in;
+}
+
+.navigation .right .search:hover {
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+blockquote {
+  background-color: #f2f2f2;
+  border-left: 2px solid #E7E7E7;
+  border-radius: 2px;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+
+blockquote:before {
+  color: #ccc;
+  content: "“";
+  font-size: 4em;
+  line-height: 0.1em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
+}
+
+pre {
+  border: 1px dashed #2f6fab;
+  font-size: 1.3em;
+}

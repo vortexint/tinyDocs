@@ -1,20 +1,31 @@
-# Main Page
-Welcome to your first **TinyDocs** page!
+<h1 style="text-align:center"> Main Page</h1> 
+<p style="text-align:center">Welcome to your first TinyDocs page!</p>
 
-Thank you for choosing TinyDocs, a powerful documentation platform that makes creating and customizing your documentation a breeze!
+Thank you for choosing TinyDocs, the user-friendly content-management-system that makes documentation effortless!
 
-# Configuration
-To configure TinyDocs to your specific preferences, you can modify the [configuration file](./config.yml) which utilizes [YAML](https://yaml.org/), a human-friendly data serialization language.
+## Configuration
+To configure TinyDocs to your specific preferences, modify the [configuration file](./config.ini).
+
+You'll find the configuration to be quite self-explanatory. 
+
+> Notice: If you haven't done so yet, set the config.ini's permission level to **700**, otherwise your config.ini will be exposed to the internet.
 
 ## Directory structure
 
-### Special File: index.md
-One important feature of TinyDocs is the index.md file. This file serves as the default resolution whenever you access any subdirectory without specifying a particular page such as the main page itself.
+### Special Filename: index.md
+One important feature of TinyDocs is the index.md filename, it serves as the default resolution whenever you access any subdirectory without specifying a particular page.
+
+> Hyperlinking to the index is possible, but it's better to use the actual name of the category instead of the index page for smaller links.
+- ✅ example.com/
+- ✅ example.com/?p=category
+- ❌ example.com/?p=category:index
 
 ### Categories
-If your category lacks an index file, the engine will automatically resolve to a custom page displaying a list of pages within that category.
+If your category lacks an index file, the engine will automatically generate a custom page displaying a list of pages within that category.
 
-The `index.md` file is masked by the name of it's parent category
+The `index.md` file is masked by the name of it's parent category.
+
+Here's an example: [?p=Category](?p=Category/index)
 
 ## Markdown
 *Markdown* is a lightweight markup language that is easy to read and write. It is widely used for formatting text on the web and is supported by many platforms and documentation tools, including TinyDocs.
@@ -25,7 +36,7 @@ In *TinyDocs* documentation, you use *Markdown* to structure your pages, add cod
 
 If you are not familiar with *Markdown*, don't worry! It's easy to learn, and there are plenty of online resources available to help you get started. Feel free to experiment and use this platform to showcase your ideas and knowledge effectively.
 
-For a quick reference, here are some common Markdown syntax examples:
+For some reference, here are some common Markdown syntax examples:
 ### Headings
 ```md
 # Heading 1
@@ -33,6 +44,11 @@ For a quick reference, here are some common Markdown syntax examples:
 ### Heading 3
 #### Heading 4
 ```
+# Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4
+
 ### Lists
 Unordered List:
 ```md
@@ -40,16 +56,24 @@ Unordered List:
 - Item 2
 - Item 3
 ```
+- Item 1
+- Item 2
+- Item 3
+
 Ordered List:
 ```md
 1. First Item
 2. Second Item
 3. Third Item
 ```
+1. First Item
+2. Second Item
+3. Third Item
+
 ### Code Blocks
 Looking to document code? Markdown has you covered.
 
-Wrap code in triple backticks ``` or wrap in single \` backticks for `inline code`
+Wrap multiline code in triple backticks or wrap in a single backticks for `inline code`
 
 Examples:
 ### Python Example (```py)
