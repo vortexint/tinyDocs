@@ -18,14 +18,14 @@ One important feature of TinyDocs is the index.md filename, it serves as the def
 > Hyperlinking to the index is possible, but it's better to use the actual name of the category instead of the index page for smaller links.
 - ✅ example.com/
 - ✅ example.com/?p=category
-- ❌ example.com/?p=category:index
+- ❌ example.com/?p=category/index
 
 ### Categories
 If your category lacks an index file, the engine will automatically generate a custom page displaying a list of pages within that category.
 
 The `index.md` file is masked by the name of it's parent category.
 
-Here's an example: [?p=Category](?p=Category/index)
+Here's an example: [?p=Category](?p=Category/)
 
 ## Markdown
 *Markdown* is a lightweight markup language that is easy to read and write. It is widely used for formatting text on the web and is supported by many platforms and documentation tools, including TinyDocs.

@@ -15,24 +15,17 @@ $modules = explode(',', $ini['modules']);
 
 // State
 
-$page = $_GET['p'];
+$page = isset($_GET['p']) ? $_GET['p'] : 'index'; // if nothing, default to index
 
+if(is_dir('content/'. $page)) // if this is true, it's a category
+    $page = $page . '/index';
 
-if ( $page === 'index') {
-    header('Location: /');
-    exit;
-}
+$md_path = 'content/' . $page . '.md';
+$page_exists = file_exists($md_path);
 
-if (!$page)
-    $page = 'index';
-
-$page_path = 'content/' . $page . '.md';
-$page_exists = file_exists($page_path);
-
-// if "index" is in the URL, remove it
 
 // variables that modules can edit to add additional content to each respective tag
-$additionalHead;
+$additionalHead = '';
 $additionalContent = '';
 $additionalBody = '';
 
@@ -44,21 +37,17 @@ foreach ($modules as $module) {
 
 function create_page_contents()
 {
-    if ($GLOBALS['page']) {
-        $Parsedown = new Parsedown();
-        // check if the page exists
-        if (!$GLOBALS['page_exists']) {
-            ?>
-            <h1>Error 404</h1>
-            <p>The page "<?php echo $GLOBALS['page']; ?>" does not exist.</p>
-            <?php
-            return;
-        }
-        echo $Parsedown->text(file_get_contents($GLOBALS['page_path']));
-    } else {
-        // No 'page' parameter found in the URL redirect to ?page=Main
-        header("Location:?p=index");
+    $Parsedown = new Parsedown();
+    // check if the page exists
+    if (!$GLOBALS['page_exists']) {
+        ?>
+        <h1>Error 404</h1>
+        <p>The page "<?php echo $GLOBALS['page']; ?>" does not exist.</p>
+        <p>Return to <a href="/">Main Page</a></p>
+        <?php
+        return;
     }
+    echo $Parsedown->text(file_get_contents($GLOBALS['md_path']));
 }
 ?>
 
@@ -90,6 +79,28 @@ function create_page_contents()
     <!-- Middle column -->
     <div>
         <div class="navigation">
+            <div class="left">
+                <p class="breadcrumbs">
+                <?php
+                // Breadcrumbs
+                $page = isset($_GET['p']) ? $_GET['p'] : '';
+                $breadcrumbs = explode('/', './' . $page);
+                $breadcrumbString = '';
+
+                $currentPath = '';
+                $breadcrumbLinks = [];
+
+                foreach ($breadcrumbs as $breadcrumb) {
+                    if ($breadcrumb !== '') { // Skip empty breadcrumbs
+                        $currentPath .= $breadcrumb . '/';
+                        $breadcrumbLinks[] = '<a href="' . rtrim($currentPath, '/') . '">' . ucfirst($breadcrumb) . '</a>';
+                    }
+                }
+
+                echo implode(' / ', $breadcrumbLinks);
+                ?>
+                </p>
+            </div>
             <div class="right">
                 <input type="search" placeholder="Search <?php echo $title?> "><input class="search" type="button" value="Search">
             </div>
@@ -103,8 +114,8 @@ function create_page_contents()
         <footer>
             <p>
             <?php
-            if (isset($page))
-                echo "Page last modified on " . date('F d Y H:i:s', filemtime($page_path))
+            if ($page_exists)
+                echo "Page last modified on " . date('F d Y H:i:s', filemtime($md_path))
             ?></p>
         </footer>
     </div>
