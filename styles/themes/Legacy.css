@@ -73,6 +73,8 @@ a:hover {
   background-color: #ccc;
 }
 
+/* Page Content */
+
 blockquote {
   background-color: #f2f2f2;
   border-left: 2px solid #E7E7E7;
@@ -92,7 +94,20 @@ blockquote p {
   display: inline;
 }
 
+/* Code blocks */
 pre {
   border: 1px dashed #2f6fab;
   font-size: 1.3em;
 }
+
+.search-sample {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.search-result-data {
+  margin-top: 0;
+  color: green;
+  font-size: 97%;
+}
+
