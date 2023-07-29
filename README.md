@@ -1,12 +1,12 @@
 <h1 align="center">TinyDocs</h1>
 <img src="https://img.shields.io/github/license/vortexdevsoftware/tiny-wiki"> <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/vortexdevsoftware/tiny-wiki/total">
 <p align="center">
-  <img src="favicon.png" width=64 />
+  <img src="https://github.com/vortexdevsoftware/tinyDocs/assets/18470725/4b84b2aa-d1c9-4eb9-8eb4-332809fc5a79" width=500 />
 </p>
-<p align="center">Flat-file CMS engine with search</p>
-<sub align="center">And maybe editing in the future</sub>
+<p align="center">Flat-file CMS engine with search<br><sub>And possibly editing in the future</sub></p>
 
-Create documentation webpages with Markdown, syntax highlighting with [Highlight.js](https://highlightjs.org/)
+<br><br>
+Create documentation webpages with Markdown, syntax highlighting
 
 ## Why use TinyDocs?
 Are you looking for a simple way to document anything?
@@ -17,6 +17,8 @@ Are you looking for a simple way to document anything?
 3. 🛠️ **Hackable**: You can easily customize your installation by creating modules, CSS stylesheets.
 4. 🧩 **Scalable**: *TinyDocs* provides a scalable solution, allowing your documentation to grow and expand as needed to accommodate changes and additions.
 5. 📝 **Documented**: Everything that you would want to change is documented in the source code.
+
+Live example: https://docs.vortex-dev.com
 
 ## Modules
 *TinyDocs* offers a module system: small PHP packages that add or change functionality, such as the table of contents, search bar, and sub-title, they are located in the `Modules/` directory
@@ -39,7 +41,7 @@ In order to configure TinyDocs you will need to upload the files to your web ser
 5. Add your Markdown files to the pages/ directory, organizing them into folders if you wish to create categories.
 
 ## Dependencies
-* [PHP](https://secure.php.net/) >= 5.3.0 
+* [PHP](https://secure.php.net/) >= 5.3.0
 
 ## Contributions
 Any contributions are welcome!, if you have any questions or suggestions, open an issue.
