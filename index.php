@@ -231,9 +231,6 @@ function create_page_contents()
                 </p>
             </footer>
         </div>
-        <!-- Right column -->
-        <div>
-        </div>
         <?php
             echo $additionalBody;
         ?>

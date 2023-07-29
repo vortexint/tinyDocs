@@ -2,6 +2,7 @@
 
 body {
   display: flex;
+  margin: 0.5em;
 }
 
 :root {
@@ -14,14 +15,14 @@ body > div:nth-child(2) {
 }
 
 /* Left and right columns */
-body > div:nth-child(1), body > div:nth-child(3) {
-  width: 25%;
+body > div:nth-child(1) {
+  width: 10em;
+  margin-right: 0.5em;
 }
 
 /* Content styles to fill the columns */
 body > div {
   box-sizing: border-box;
-  padding: 10px;
 }
 
 /* Responsive styles */

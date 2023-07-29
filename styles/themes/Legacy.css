@@ -31,14 +31,21 @@ a:hover {
   display: flow-root;
 }
 
-.content, #toc  {
-  background-color: #fff;
+.content {
   padding-left: 1em;
   padding-right: 1em;
+}
+
+.content, #toc  {
+  background-color: #fff;
   border-width: 1px;
   border-style: solid;
   border-color: var(--border-color);
   border-radius: 2px;
+}
+
+#toc {
+  float: right;
 }
 
 #toc h2 {
@@ -53,8 +60,9 @@ a:hover {
 }
 
 ul {
-  padding-left: 10px;
+  padding-left: 0.5em;
   margin: 0;
+  list-style: none;
 }
 
 .navigation .right {
@@ -99,9 +107,10 @@ ul {
   #eee 12px,
   transparent 12px,
   transparent 20px);
-  padding: 1.22em;
+  padding: 0.5em;
   margin-bottom: 0.5em;
   border: 1px solid var(--border-color);
+  height: 19px;
 }
 
 /* Page Content */
