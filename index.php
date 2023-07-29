@@ -225,7 +225,7 @@ function create_page_contents()
         <footer>
             <p>
                 <?php
-                if ($page_exists)
+                if (isset($GLOBALS['page_exists']))
                     echo "Page last modified on " . date('F d Y H:i:s', filemtime($md_path))
                 ?>
                 </p>
