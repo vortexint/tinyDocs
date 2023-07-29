@@ -40,3 +40,6 @@ In order to configure TinyDocs you will need to upload the files to your web ser
 
 ## Dependencies
 * [PHP](https://secure.php.net/) >= 5.3.0 
+
+## Contributions
+Any contributions are welcome!, if you have any questions or suggestions, open an issue.

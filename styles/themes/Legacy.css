@@ -23,11 +23,15 @@ a:hover {
   text-decoration: underline;
 }
 
+.breadcrumbs {
+  margin-bottom: 0;
+}
+
 .content, .navigation {
   display: flow-root;
 }
 
-.content {
+.content, #toc  {
   background-color: #fff;
   padding-left: 1em;
   padding-right: 1em;
@@ -35,6 +39,22 @@ a:hover {
   border-style: solid;
   border-color: var(--border-color);
   border-radius: 2px;
+}
+
+#toc h2 {
+  display: inline-block;
+  width: 100%;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  font-weight: bold;
+  text-align: center;
+}
+
+ul {
+  padding-left: 10px;
+  margin: 0;
 }
 
 .navigation .right {
@@ -71,6 +91,17 @@ a:hover {
 
 .navigation .right .search:active {
   background-color: #ccc;
+}
+
+.navigation .blank {
+  background-image: repeating-linear-gradient(45deg, 
+  #eee 10px,
+  #eee 12px,
+  transparent 12px,
+  transparent 20px);
+  padding: 1.22em;
+  margin-bottom: 0.5em;
+  border: 1px solid var(--border-color);
 }
 
 /* Page Content */

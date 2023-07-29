@@ -47,7 +47,7 @@ function create_page_contents()
     if ($GLOBALS['searchQuery']) {
         $startTime = microtime(true);
 
-        echo "<h1>Search results for " . $GLOBALS['searchQuery'] . "</h1>";
+        echo "<h1>Search results for \"" . $GLOBALS['searchQuery'] . "\"</h1>";
 
         // Get all the files and subdirectories in the content directory
         $files = new RecursiveIteratorIterator(
@@ -155,6 +155,7 @@ function create_page_contents()
     <link rel="icon" type="image/x-icon" href="<?php echo $favicon; ?>">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/themes/<?php echo $defaultTheme; ?>">
+    <script src="js/cms.js" defer></script>
     <meta name="keywords" content="<?php echo $description; ?>">
     <?php
     echo $additionalHead;
@@ -168,8 +169,19 @@ function create_page_contents()
 <body>
     <!-- Left column -->
     <div>
-        <h1><?php echo $title ?></h1>
-
+        <div class="navigation">
+            <div class="blank">
+            </div>
+        </div>
+        <table id="toc" style="<?php echo $GLOBALS['searchQuery'] ? "display:none" : ""  ?>">
+            <tbody>
+                <tr>
+                    <td id="toc-content">
+                        <h2>Contents</h2>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     <!-- Middle column -->
     <div>
