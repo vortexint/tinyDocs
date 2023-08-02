@@ -210,7 +210,7 @@ function create_page_contents()
                     ?>
                 </p>
             </div>
-            <form method="GET" action="/">
+            <form method="GET" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <div class="right">
                 <input type="search" name="q" placeholder="Search <?php echo $title ?> "><input class="search" type="submit" value="Search">
             </div>
