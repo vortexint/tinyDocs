@@ -18,8 +18,6 @@ Are you looking for a simple way to document anything?
 4. 🧩 **Scalable**: *TinyDocs* provides a scalable solution, allowing your documentation to grow and expand as needed to accommodate changes and additions.
 5. 📝 **Documented**: Everything that you would want to change is documented in the source code.
 
-Live example: https://docs.vortex-dev.com
-
 ## Modules
 *TinyDocs* offers a module system: small PHP packages that add or change functionality, such as the table of contents, search bar, and sub-title, they are located in the `Modules/` directory
 
